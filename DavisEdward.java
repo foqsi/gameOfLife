@@ -3,7 +3,7 @@ package gol;
  * Name: Davis, Edward
  * File: DavisEdward.java
  * Description: Main method class for Conway's game of life.
- * Note: Your console should be 80x24.
+ * Note: The console should be 80x24.
  */
 public class DavisEdward {
     public static void main(String[] args) {
