@@ -4,6 +4,7 @@ package gol;
  * File: GOL.java
  * Description: Conway's game of life.
  */
+
 public class GOL /* extend the provided board class here. */ {
     final char ALIVE = '*';
     final char DEAD = ' ';
