@@ -1,4 +1,5 @@
 package gol;
+
 /**
  * Name: Davis, Edward
  * File: Board.java
