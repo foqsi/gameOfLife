@@ -3,6 +3,7 @@
  * File: GOL.java
  * Description: Conway's game of life.
  */
+
 public class GOL extends Board {
     final char ALIVE = '*';
     final char DEAD = ' ';
@@ -11,7 +12,7 @@ public class GOL extends Board {
         // call the parent's (Board) constructor and pass it the path.
         super(filepath);
     }
-    
+
     public void evolve() {
         char[][] nextGen = this.getCopy();
         // write a two dimensional loop that iterates over this.cells
@@ -19,11 +20,11 @@ public class GOL extends Board {
         // current cell's neighbours and game of life's rules. Use the
         // this.countAliveNeighbours(i, j) function.
         int rows = this.cells.length, columns = this.cells[0].length;
-        for(int i = 0; i < rows; i++) {
-            for(int j = 0; j < columns; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 int aliveNeighbours = countAliveNeighbours(i, j);
-                if(aliveNeighbours == 3) {
-                   nextGen[i][j] = this.ALIVE;
+                if (aliveNeighbours == 3) {
+                    nextGen[i][j] = this.ALIVE;
                 } else if (aliveNeighbours != 2) {
                     nextGen[i][j] = this.DEAD;
                 }
@@ -46,14 +47,14 @@ public class GOL extends Board {
         // for a given cell i, j, return how many of its neighbours
         // are alive. Use the this.isAlive(i, j) to determine
         // whether a cell is alive.
-        int rowMin = Math.max( i - 1, 0);
-        int rowMax = Math.min( i + 1, rows - 1 );
-        int colMin = Math.max( j - 1, 0);
-        int colMax = Math.min( j + 1, columns - 1 );
+        int rowMin = Math.max(i - 1, 0);
+        int rowMax = Math.min(i + 1, rows - 1);
+        int colMin = Math.max(j - 1, 0);
+        int colMax = Math.min(j + 1, columns - 1);
 
         for (int k = rowMin; k <= rowMax; k++) {
             for (int l = colMin; l <= colMax; l++) {
-                if(!(k == i && l == j) && this.isAlive(k,l)) {
+                if (!(k == i && l == j) && this.isAlive(k, l)) {
                     count++;
                 }
             }

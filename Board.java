@@ -23,7 +23,7 @@ public class Board {
         }
         return ret;
     }
-
+   
     public char[][] getCopy() {
         int rows = this.cells.length, columns = this.cells[0].length;
         char[][] ret = new char[rows][columns];
