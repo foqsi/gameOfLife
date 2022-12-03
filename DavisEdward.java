@@ -1,5 +1,3 @@
-package gol;
-
 /**
  * Name: Davis, Edward
  * File: DavisEdward.java
@@ -16,11 +14,9 @@ public class DavisEdward {
             do {
                 System.out.print(automaton);
                 // evolve the automaton, use the GOL.evolve();
-                evolve();
-
+                automaton.evolve();
                 // pause for a milliseconds, use the GOL.pause(100);
-                pause(100);
-
+                automaton.pause(100);
                 i++;
             } while (i < 500);
         }

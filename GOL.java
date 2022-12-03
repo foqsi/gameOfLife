@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Name: Davis, Edward
  * File: GOL.java
@@ -10,23 +8,27 @@ public class GOL extends Board {
     final char DEAD = ' ';
 
     public GOL(String filepath) {
-
-        // call the parent's (board) constructor and pass it the path.
+        // call the parent's (Board) constructor and pass it the path.
         super(filepath);
-
     }
-
+    
     public void evolve() {
         char[][] nextGen = this.getCopy();
-        for (int i = 0; i <= cells.length; i++) {
-            for (int j = 0; j <= cells[i].length; i++) {
-
-            }
-        }
         // write a two dimensional loop that iterates over this.cells
         // and reassigns each state in nextGen according to the
         // current cell's neighbours and game of life's rules. Use the
         // this.countAliveNeighbours(i, j) function.
+        int rows = this.cells.length, columns = this.cells[0].length;
+        for(int i = 0; i < rows; i++) {
+            for(int j = 0; j < columns; j++) {
+                int aliveNeighbours = countAliveNeighbours(i, j);
+                if(aliveNeighbours == 3) {
+                   nextGen[i][j] = this.ALIVE;
+                } else if (aliveNeighbours != 2) {
+                    nextGen[i][j] = this.DEAD;
+                }
+            }
+        }
         this.cells = nextGen;
     }
 
@@ -41,11 +43,17 @@ public class GOL extends Board {
     private int countAliveNeighbours(int i, int j) {
         int count = 0;
         int rows = this.cells.length, columns = this.cells[0].length;
-        // for a given cell i, j, return how many of its neighbours are alive.
-        for (i = 0; i <= cells.length; i++) {
-            for (j = 0; j <= cells[i].length; j++) {
-                // Use the this.isAlive(i, j) to determine whether a cell is alive.
-                if (this.isAlive(i, j)) {
+        // for a given cell i, j, return how many of its neighbours
+        // are alive. Use the this.isAlive(i, j) to determine
+        // whether a cell is alive.
+        int rowMin = Math.max( i - 1, 0);
+        int rowMax = Math.min( i + 1, rows - 1 );
+        int colMin = Math.max( j - 1, 0);
+        int colMax = Math.min( j + 1, columns - 1 );
+
+        for (int k = rowMin; k <= rowMax; k++) {
+            for (int l = colMin; l <= colMax; l++) {
+                if(!(k == i && l == j) && this.isAlive(k,l)) {
                     count++;
                 }
             }
@@ -56,12 +64,11 @@ public class GOL extends Board {
     private boolean isAlive(int i, int j) {
         // you can determine whether a cell is alive by comparing it's
         // character with this.ALIVE.
-        for (i = 0; i < cells.length; i++) {
-            for (j = 0; j < cells[i].length; j++) {
-                if (cells[i][j] == this.ALIVE) {
-                    return isAlive;
-                }
-            }
+        try {
+            return this.ALIVE == this.cells[i][j];
+        } catch (IndexOutOfBoundsException ex) {
+            ex.printStackTrace();
         }
+        return false;
     }
 }
