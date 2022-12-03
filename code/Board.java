@@ -1,5 +1,4 @@
 /**
- * Name: Davis, Edward
  * File: Board.java
  * Description: Representation of the game's board.
  */
