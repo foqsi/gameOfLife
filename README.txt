@@ -1,6 +1,6 @@
 README File
 
-
+School assignment
 
 Compile and run GOLRunner.
 
