@@ -1,7 +1,3 @@
-/**
- * File: Board.java
- * Description: Representation of the game's board.
- */
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
